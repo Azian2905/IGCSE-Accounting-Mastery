@@ -1,0 +1,8 @@
+export interface AiContext { moduleId?:string; question?:string; studentAnswer?:string; marks?:number; language?:'english'|'english-bangla'; mode?:'learning'|'exam'; weakAreas?:string[]; }
+export interface AiResult { text:string; connected:boolean; }
+export interface AiProvider { name:string; isConfigured():boolean; explain(c:AiContext):Promise<AiResult>; markAnswer(c:AiContext):Promise<AiResult>; generatePractice(c:AiContext):Promise<AiResult>; }
+const unavailable=(action:string,c:AiContext):Promise<AiResult>=>Promise.resolve({connected:false,text:`AI Tutor is not connected yet. ${action} is ready once a secure server-side AI provider is configured.${c.moduleId?` Current module: ${c.moduleId}.`:''} The rest of the study website works without AI.`});
+const localProvider:AiProvider={name:'Local demo / no external provider',isConfigured:()=>false,explain:c=>unavailable('Explanation',c),markAnswer:c=>unavailable('Answer marking',c),generatePractice:c=>unavailable('Personalised practice generation',c)};
+let provider:AiProvider=localProvider;
+export const aiTutor={getProvider:()=>provider,setProvider:(p:AiProvider)=>{provider=p},explain:(c:AiContext)=>provider.explain(c),markAnswer:(c:AiContext)=>provider.markAnswer(c),generatePractice:(c:AiContext)=>provider.generatePractice(c)};
+export const aiPromptTemplates={explainTopic:'Explain the syllabus point simply, then give one example and one exam trap.',bangla:'Explain in simple Bangla while retaining technical accounting terms in English.',markTheory:'Use the supplied question and marks. Separate knowledge, development, application and evaluation. Label non-official scoring as an estimate.',generateQuestions:'Generate syllabus-aligned practice and never invent official topic mark allocations.'};

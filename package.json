@@ -1,10 +1,10 @@
 {
   "name": "accounting-mastery-hub",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.3.0",
   "type": "module",
   "scripts": {
-    "build": "rm -rf dist && mkdir -p dist && tsc && cp index.html styles.css dist/ && cp README.md dist/README.txt",
+    "build": "rm -rf dist && mkdir -p dist && tsc && cp index.html styles.css v3.css v3.js hero-study.svg dist/ && cp README.md dist/README.txt",
     "test:logic": "npm run build >/dev/null && node tests/progress.test.mjs",
     "serve": "http-server dist -p 8080 -c-1"
   }

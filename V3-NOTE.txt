@@ -1,0 +1,1 @@
+V3 UI files: v3.css, v3.js and hero-study.svg. Production copies live in dist/. Vercel serves dist/.

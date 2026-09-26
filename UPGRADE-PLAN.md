@@ -21,15 +21,17 @@ Status: implemented
 - Existing localStorage key preserved
 
 ### Phase 2 — Core learning improvements
-Next
-- “I don’t understand this question” guided flow
-- Advanced Theory Trainer
-- Exam Answer Space mode
-- Exam English
-- Guess / IDK system
+Status: implemented
+- “I don’t understand this question” guided flow with staged help before answer reveal
+- Advanced Theory Trainer with meaning, relevant information, possible points, answer analysis and improved response
+- Exam Answer Space mode for concise answers
+- Exam English command-word trainer and mini quiz
+- Guess / IDK and confidence tracking for practice questions
+- Easy / Normal / Hard / Brutal practice modes mapped to the current in-syllabus question bank
+- Result cards with answer, reason, confidence and a short memory rule
 
 ### Phase 3 — Revision intelligence
-Planned
+Next
 - Smart Mistake Bank
 - Automatic Revision Queue
 - My Exam Answer Bank

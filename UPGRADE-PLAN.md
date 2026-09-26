@@ -1,6 +1,6 @@
 # Accounting Mastery Upgrade Plan
 
-This repository is being upgraded progressively. Existing browser progress remains on the same localStorage key: `accounting-mastery-hub-v1`.
+This repository is upgraded progressively while preserving the same browser progress key: `accounting-mastery-hub-v1`.
 
 ## Non-negotiable rules
 
@@ -31,38 +31,48 @@ Status: implemented
 - Result cards with answer, reason, confidence and a short memory rule
 
 ### Phase 3 — Revision intelligence
-Next
-- Smart Mistake Bank
-- Automatic Revision Queue
-- My Exam Answer Bank
-- AI Tutor context actions
+Status: implemented
+- Smart Mistake Bank with richer context and filtering
+- Automatic revision priority queue using weak areas, mistakes, due revisions, confidence and performance
+- My Exam Answer Bank with search, favourites, learned/revise states and personal answers
+- One-click tutor context handoff and quick coaching actions
+- External live AI provider is still optional and is not falsely represented as connected
 
 ### Phase 4 — Exam system
-Planned
-- Past Paper Question Library
-- Paper 1 / Paper 2 Exam Mode
-- Mark Scheme Comparison
-- AO1 / AO2 / AO3 tracking
+Status: implemented
+- Searchable question library using the project question bank
+- Clear source labels so generated/style questions are not falsely presented as official Pearson questions
+- Paper 1 / Paper 2 timed practice mode
+- Question navigation, flags, unanswered warning, progress bar, submit confirmation and result report
+- Paper summary cards with official paper durations/marks already used by this project
+- Mark Scheme Comparison view for theory answers, clearly labelled as suggested analysis unless an official mark scheme is available
+- Internal AO1 / AO2 / AO3 performance tracking from stored attempts
 
 ### Phase 5 — Analytics
-Planned
-- Readiness components
-- Weakness heatmap
-- Real-data charts
-- Skills radar
-- Score progression
+Status: implemented
+- Multi-component internal Exam Readiness dashboard
+- Weakness heatmap with multiple views
+- Real-data mock trend, topic accuracy, mastery breakdown, paper comparison, accuracy trend and study-time charts
+- Accounting skills radar
+- Score-improvement views where repeated attempt data exists
+- Empty states instead of fake chart data
 
 ### Phase 6 — Visual upgrades
-Planned
-- Journey to Exam
-- Study calendar heatmap
+Status: implemented
+- Journey to Exam visual path
+- Study calendar heatmap with month navigation and streak information
 - 24-module mastery map
-- Paper cards
-- Accounting learning diagrams
-- Achievements
-- Completion animations
-- Improved accounting-specific hero
+- Premium Paper 1 / Paper 2 cards
+- Accounting learning diagrams for key topics such as double entry, control accounts, bank reconciliation, depreciation, financial statements and partnerships
+- Achievement / trophy cabinet
+- Subtle completion celebration animation with reduced-motion support
+- Weak-topic cards, revision priority graphics and upgraded result/report visuals
+- Existing premium accounting hero retained
 
 ## Data migration
 
-The application version is incremented without changing the localStorage key. Older saved states are merged into the new defaults. Existing checklist booleans remain supported, and new per-skill states are derived from them so old progress is not lost.
+The application version was incremented without changing the localStorage key. Older saved states are merged into the new defaults. Existing checklist booleans remain supported, and new per-skill states are derived from them so old progress is not lost.
+
+## Accuracy / source labelling
+
+The website must distinguish official Pearson material from Pearson-style or AI-generated practice. Internal readiness, AO and performance analytics are study metrics and must not be described as official predicted grades or official Pearson mark allocations.

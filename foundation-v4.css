@@ -1,0 +1,81 @@
+/* Phase 1 foundation for the Accounting Mastery upgrade.
+   Purpose: reusable responsive layout primitives without changing existing feature behaviour. */
+
+html,body,#app,.app-shell{max-width:100%}
+body{overflow-x:hidden}
+img,svg,canvas{max-width:100%}
+
+.coach-section{margin-top:18px}
+.coach-section:first-child{margin-top:0}
+.coach-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:12px}
+.coach-section-head h2{margin:0}
+.coach-section-head p{margin:3px 0 0;color:var(--muted)}
+.coach-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.coach-span-12{grid-column:span 12}.coach-span-8{grid-column:span 8}.coach-span-6{grid-column:span 6}.coach-span-4{grid-column:span 4}.coach-span-3{grid-column:span 3}
+
+.coach-metric{background:#fff;border:1px solid #e3e7f4;border-radius:17px;padding:17px;box-shadow:0 9px 24px rgba(44,55,118,.06)}
+.coach-metric-label{font-size:.73rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#7d86a8}
+.coach-metric-value{font-size:2rem;line-height:1;font-weight:850;color:#192653;margin:9px 0 6px}
+.coach-metric-note{font-size:.8rem;color:#77809f}
+
+.journey-strip{display:grid;grid-template-columns:repeat(7,minmax(92px,1fr));gap:8px;align-items:center;overflow-x:auto;padding:8px 2px 12px;scrollbar-width:thin}
+.journey-step{position:relative;min-width:92px;text-align:center;padding:10px 7px;border-radius:14px;background:#f6f7fc;border:1px solid #e5e8f2;color:#8a91a8}
+.journey-step::after{content:"";position:absolute;top:50%;right:-9px;width:10px;height:2px;background:#d6dbea}
+.journey-step:last-child::after{display:none}
+.journey-step.done{background:#eef8f4;border-color:#cfeade;color:#167f60}
+.journey-step.current{background:#f1efff;border-color:#d8d1ff;color:#6151d9;box-shadow:0 0 0 3px rgba(102,83,224,.08)}
+.journey-step.current .journey-dot{animation:coachPulse 1.8s ease-in-out infinite}
+.journey-dot{width:14px;height:14px;border-radius:50%;display:block;margin:0 auto 7px;background:currentColor}
+.journey-step b{display:block;font-size:.78rem}
+@keyframes coachPulse{0%,100%{box-shadow:0 0 0 0 rgba(102,83,224,.18)}50%{box-shadow:0 0 0 8px rgba(102,83,224,0)}}
+
+.mastery-map{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}
+.mastery-tile{min-width:0;border:1px solid #e5e8f3;border-radius:12px;background:#fff;padding:10px 8px;text-align:center;cursor:pointer;transition:.14s ease}
+.mastery-tile:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(53,62,122,.08)}
+.mastery-tile strong{display:block;font-size:.82rem;color:#25315f}
+.mastery-tile small{display:block;margin-top:4px;color:#8991ab;font-size:.68rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mastery-tile[data-status="mastered"]{border-color:#bee7d8;background:#eefaf6}
+.mastery-tile[data-status="completed"]{border-color:#cadbfa;background:#f1f6ff}
+.mastery-tile[data-status="learning"]{border-color:#f2d9a5;background:#fff9ed}
+.mastery-tile[data-status="weak"]{border-color:#f0c5cf;background:#fff3f5}
+.mastery-tile[data-status="not-started"]{background:#f7f8fb}
+
+.skill-state-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.skill-state-pill{border:1px solid #e0e4f2;background:#fff;color:#65708f;border-radius:999px;padding:5px 8px;font-size:.68rem;font-weight:750;cursor:pointer}
+.skill-state-pill.active{border-color:#8f82f0;background:#f1efff;color:#5c50cf}
+
+.paper-folder{position:relative;background:linear-gradient(145deg,#fff,#f8f9ff);border:1px solid #dfe4f3;border-radius:18px;padding:20px;box-shadow:0 10px 26px rgba(55,63,122,.06)}
+.paper-folder::before{content:"";position:absolute;top:-7px;left:20px;width:82px;height:14px;border:1px solid #dfe4f3;border-bottom:0;border-radius:9px 9px 0 0;background:#f7f8ff}
+
+.chart-shell{min-height:220px;border:1px solid #e4e7f2;border-radius:16px;background:#fff;padding:16px;display:grid;place-items:center}
+.chart-empty{color:#7e87a4;text-align:center;max-width:360px}
+.chart-empty b{display:block;color:#27345f;margin-bottom:5px}
+
+.mobile-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.table-scroll table{min-width:680px}
+
+.empty-state{padding:24px;border:1px dashed #d9deec;border-radius:16px;background:#fafbfe;text-align:center;color:#7d86a3}
+.empty-state strong{display:block;color:#293560;margin-bottom:4px}
+
+@media(max-width:1100px){
+  .coach-span-8{grid-column:span 12}.coach-span-4{grid-column:span 6}.coach-span-3{grid-column:span 6}
+  .mastery-map{grid-template-columns:repeat(6,minmax(0,1fr))}
+}
+@media(max-width:820px){
+  .coach-grid{grid-template-columns:1fr}
+  .coach-span-12,.coach-span-8,.coach-span-6,.coach-span-4,.coach-span-3{grid-column:auto}
+  .coach-section-head{align-items:flex-start;flex-direction:column;gap:5px}
+  .mastery-map{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .journey-strip{grid-template-columns:repeat(7,112px)}
+}
+@media(max-width:560px){
+  .coach-metric{padding:14px;border-radius:14px}
+  .coach-metric-value{font-size:1.75rem}
+  .mastery-map{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mastery-tile{padding:9px 6px}
+}
+@media(prefers-reduced-motion:reduce){
+  .journey-step.current .journey-dot{animation:none}
+  .mastery-tile{transition:none}
+}

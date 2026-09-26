@@ -1,0 +1,1 @@
+Phase 2 adds guided question help, MCQ guess/IDK confidence tracking, Exam Answer Space, Advanced Theory Trainer, and Exam English. Existing localStorage key remains unchanged.

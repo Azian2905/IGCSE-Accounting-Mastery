@@ -1,6 +1,6 @@
-import { getState } from '/store.js';
-import { modules } from '/data.js';
-import { daysUntil, examReadiness, overallCompletion, paperCoverage, recommendedNext, today } from '/utils.js';
+import { getState } from './store.js';
+import { modules } from './data.js';
+import { daysUntil, examReadiness, overallCompletion, paperCoverage, recommendedNext, today } from './utils.js';
 
 const PRIMARY_NAV = [
   ['dashboard','Home','⌂'],
@@ -87,24 +87,27 @@ function decorateSidebar(){
   const sidebar = document.querySelector('.sidebar');
   if(!sidebar) return;
   sidebar.classList.add('v3-sidebar');
-  const brand = sidebar.querySelector('.brand');
-  if(brand && !brand.querySelector('.v3-brand-copy')){
-    const strong = brand.querySelector('strong');
-    const small = brand.querySelector('small');
-    if(strong) strong.textContent = 'IGCSE';
-    if(small) small.textContent = 'Accounting Mastery';
-    const mark = brand.querySelector('.brand-mark');
-    if(mark) mark.innerHTML = '<span aria-hidden="true">▤</span>';
+  if(sidebar.dataset.v3Decorated !== '1'){
+    const brand = sidebar.querySelector('.brand');
+    if(brand){
+      const strong = brand.querySelector('strong');
+      const small = brand.querySelector('small');
+      if(strong) strong.textContent = 'IGCSE';
+      if(small) small.textContent = 'Accounting Mastery';
+      const mark = brand.querySelector('.brand-mark');
+      if(mark) mark.innerHTML = '<span aria-hidden="true">▤</span>';
+    }
+    const oldSearch = sidebar.querySelector('.search-box');
+    if(oldSearch) oldSearch.classList.add('v3-source-search');
+    const foot = sidebar.querySelector('.sidebar-foot');
+    if(foot) foot.innerHTML = '<span>Edexcel 4AC1</span><small>November 2026 exam journey</small>';
+    sidebar.dataset.v3Decorated = '1';
   }
-  const oldSearch = sidebar.querySelector('.search-box');
-  if(oldSearch) oldSearch.classList.add('v3-source-search');
   const nav = sidebar.querySelector('nav');
   if(nav && nav.dataset.v3Nav !== '1'){
     nav.innerHTML = navMarkup();
     nav.dataset.v3Nav = '1';
   }
-  const foot = sidebar.querySelector('.sidebar-foot');
-  if(foot) foot.innerHTML = '<span>Edexcel 4AC1</span><small>November 2026 exam journey</small>';
 }
 
 function topbarMarkup(state){
@@ -127,13 +130,12 @@ function ensureTopbar(){
   const content = main?.querySelector('.content');
   if(!main || !content) return;
   let bar = main.querySelector(':scope > .v3-topbar');
+  if(bar) return;
   const state = getState();
-  if(!bar){
-    bar = document.createElement('header');
-    bar.className = 'v3-topbar';
-    main.insertBefore(bar, content);
-  }
+  bar = document.createElement('header');
+  bar.className = 'v3-topbar';
   bar.innerHTML = topbarMarkup(state);
+  main.insertBefore(bar, content);
   const form = bar.querySelector('#v3-global-search-form');
   form?.addEventListener('submit', event => {
     event.preventDefault();

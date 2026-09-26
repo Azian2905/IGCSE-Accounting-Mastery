@@ -81,3 +81,6 @@ The browser storage key is `accounting-mastery-hub-v1`. Export a JSON backup bef
 ## AI Tutor security
 
 The frontend contains no real secret API key. Connect a future AI provider through a secure server-side endpoint that implements the provider interface in `src/ai.ts`.
+
+## v1.2.2
+- Robust fix for syllabus checklist text wrapping: checklist rows now use flexbox and full-width text.

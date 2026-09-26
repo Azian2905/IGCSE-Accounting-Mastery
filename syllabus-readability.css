@@ -37,17 +37,17 @@
   height:1px !important;
 }
 
-/* Skill text first, large and bold. */
+/* Skill text: larger for readability, but not bold. */
 .syllabus-checklist .check-item > span:last-child{
   grid-column:1 !important;
   grid-row:1 !important;
   min-width:0 !important;
   width:auto !important;
   font-size:1.05rem !important;
-  line-height:1.4 !important;
-  font-weight:760 !important;
-  color:#20294f !important;
-  letter-spacing:-.01em;
+  line-height:1.45 !important;
+  font-weight:500 !important;
+  color:#293251 !important;
+  letter-spacing:0;
   white-space:normal !important;
   word-break:normal !important;
 }
@@ -87,11 +87,11 @@
   color:#39416a !important;
 }
 
-/* Give module headings slightly more hierarchy too. */
+/* Keep module names strong, but skill rows themselves are regular-medium weight. */
 .module-row-checklist .module-title b{
   font-size:1.12rem !important;
-  font-weight:850 !important;
-  letter-spacing:-.015em;
+  font-weight:800 !important;
+  letter-spacing:-.01em;
 }
 
 @media(max-width:560px){
@@ -103,6 +103,7 @@
   }
   .syllabus-checklist .check-item > span:last-child{
     font-size:.98rem !important;
+    font-weight:500 !important;
   }
   .syllabus-checklist .check-item > .check-box{
     width:28px !important;
